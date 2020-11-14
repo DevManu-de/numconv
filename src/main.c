@@ -6,9 +6,9 @@
 
 int main(int argc, char *argv[]){
 
-	char *a = "11";
+	char *a = "1011";
 	char *b = malloc(5);
-	numberconv(a, 10, b, 16);
+	numberconv(a, 2, b, 8);
 	printf("%s\n", b);
 	free(b);
 	exit(0);

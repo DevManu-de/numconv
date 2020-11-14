@@ -30,30 +30,30 @@ int numberconv(char *src, const int basesrc, char *dest, const int basedest){
         converted /= basedest;
     }
 
-    for(i = 0; i < size; i++){
+    for(i = 0; i < size - 1; i++){
         if(rests[i] > 9){
-            conv[i] = rests[i] + 55;
+            conv[size - 2 - i] = rests[i] + 55;
         }else {
-            conv[i] = rests[i] + '0';
+            conv[size - 2 - i] = rests[i] + '0';
         }
 
     }
 
-    conv[strlen(conv) - 1] = '\0';
+    conv[size - 1] = '\0';
 
 
-    char *reversed = calloc(size, sizeof(char));
+    //char *reversed = calloc(size, sizeof(char));
 
-    for(i = 0; i < size; i++){
-       reversed[i] = conv[size - 2 - i];
-    }
+    //for(i = 0; i < size - 1; i++){
+    //   reversed[i] = conv[size - 2 - i];
+    //}
 
-    reversed[size - 1] = '\0';
+    //reversed[size - 1] = '\0';
 
-    strcpy(dest, reversed);
+    strcpy(dest, conv);
 
     free(conv);
-    free(reversed);
+    //free(reversed);
 
     return 0;
 }
