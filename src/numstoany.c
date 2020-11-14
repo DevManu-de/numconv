@@ -1,6 +1,7 @@
 #include "numstoany.h"
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 int bintoany(numbers *all){
 
@@ -13,9 +14,9 @@ int bintoany(numbers *all){
 
     all->decimal = number;
     dectooct(all);
-    dectoduo(all);
-    dectohex(all);
-    dectocsm(all);
+    //dectoduo(all);
+    //dectohex(all);
+    //dectocsm(all);
 
     return 0;
 }
@@ -29,6 +30,6 @@ int bintoany(numbers *all){
 
 int dectooct(numbers *all){
 
-
-
+    all->oct = malloc(strlen(all->bin));
+    sprintf(all->oct, "%o", all->decimal);
 }
