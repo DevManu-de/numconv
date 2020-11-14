@@ -2,8 +2,9 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
-int numberconv(char *src, const int basesrc, char *dest, const int basedest, const unsigned int size){
+int numberconv(char *src, const int basesrc, char *dest, const int basedest){
 
     if(basesrc == basedest){
         strcpy(dest, src);
@@ -17,6 +18,8 @@ int numberconv(char *src, const int basesrc, char *dest, const int basedest, con
 
     //Converts the input number to decimal
     unsigned int converted = strtol(src, NULL, basesrc);
+
+    unsigned int size = (int) (log10(converted) / log10(2)) + 2;
 
     short rests[size];
     char *conv = calloc(size, sizeof(char));
