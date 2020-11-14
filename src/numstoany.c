@@ -3,23 +3,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int numberconv(char *src, const int basesrc, char *dest, const int basedest){
+int numberconv(char *src, const int basesrc, char *dest, const int basedest, const unsigned int size){
 
     if(basesrc == basedest){
         strcpy(dest, src);
         return 0;
     }
 
-    if(basedest > 36 || basesrc > 36){
+    if(basedest > 36 || basesrc > 36 || basedest < 2 || basesrc < 2){
         fprintf(stderr, "Wrong base");
         return -1;
     }
 
     long converted = strtol(src, NULL, basesrc);
-
-    //int size = converted / basedest;
-
-    int size = 5;
 
     short rests[size];
     char *conv = calloc(size, sizeof(char));
@@ -41,19 +37,9 @@ int numberconv(char *src, const int basesrc, char *dest, const int basedest){
 
     conv[size - 1] = '\0';
 
-
-    //char *reversed = calloc(size, sizeof(char));
-
-    //for(i = 0; i < size - 1; i++){
-    //   reversed[i] = conv[size - 2 - i];
-    //}
-
-    //reversed[size - 1] = '\0';
-
     strcpy(dest, conv);
 
     free(conv);
-    //free(reversed);
 
     return 0;
 }
