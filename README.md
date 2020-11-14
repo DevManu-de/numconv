@@ -15,7 +15,7 @@ make
 ```
 Then a output folder is generated
 ```
-output/main <input numerical system> <number> <output numerical system>
+output/main <input numerical system> <number> <output numerical system> <number of digits>
 ```
 
 
