@@ -15,17 +15,20 @@ int numberconv(char *src, const int basesrc, char *dest, const int basedest, con
         return -1;
     }
 
-    long converted = strtol(src, NULL, basesrc);
+    //Converts the input number to decimal
+    unsigned int converted = strtol(src, NULL, basesrc);
 
     short rests[size];
     char *conv = calloc(size, sizeof(char));
 
-    long i;
+    //Devides the number and writes it reversed in the array
+    unsigned int i;
     for(i = 0; converted > 0; i++){
         rests[i] = converted % basedest;
         converted /= basedest;
     }
 
+    //Convert numbers to characters if needed and reverses the array
     for(i = 0; i < size - 1; i++){
         if(rests[i] > 9){
             conv[size - 2 - i] = rests[i] + 55;
@@ -37,6 +40,7 @@ int numberconv(char *src, const int basesrc, char *dest, const int basedest, con
 
     conv[size - 1] = '\0';
 
+    //copys the string to the destination
     strcpy(dest, conv);
 
     free(conv);

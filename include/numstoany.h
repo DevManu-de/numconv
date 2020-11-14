@@ -5,7 +5,7 @@ typedef struct nums{
 
     char *bin;
     char *oct;
-    unsigned int decimal;
+    char *dec;
     char *duo;
     char *hex;
     char *csm;
