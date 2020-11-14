@@ -3,76 +3,57 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int bintoany(numbers *all){
+int numberconv(char *src, const int basesrc, char *dest, const int basedest){
 
-    int i, pos = 1, number = 0;
-    for(i = strlen(all->bin) - 1; i >= 0; i--){
-        int bit = all->bin[i] - '0';
-        number += bit * pos;
-        pos *= 2;
+    if(basesrc == basedest){
+        strcpy(dest, src);
+        return 0;
     }
 
-    all->decimal = number;
-    dectooct(all);
-    dectoduo(all);
-    dectohex(all);
-    //dectocsm(all);
-
-    return 0;
-}
-
-
-//int octtoany(char *, numbers);
-//int dectoany(char *, numbers);
-//int duotoany(char *, numbers);
-//int hextoany(char *, numbers);
-//int csmtoany(char *, numbers);
-
-int dectooct(numbers *all){
-
-    all->oct = malloc(strlen(all->bin));
-    sprintf(all->oct, "%o", all->decimal);
-    return 0;
-}
-
-int dectoduo(numbers *all){
-
-    short arr[10];
-    int counter = 0;
-    int num = all->decimal;
-
-    while(num > 0){
-        arr[counter] = num % 12;
-        num /= 12;
-        counter++;
-
+    if(basedest > 36 || basesrc > 36){
+        fprintf(stderr, "Wrong base");
+        return -1;
     }
 
-    char ptr[10];
-    int i;
-    for(i = 0; i < 10; i++){
-        if(arr[i] == 10){
-            ptr[i] = 'A';
-        }else if (arr[i] == 11){
-            ptr[i] = 'B';
-        }else if (arr[i] == 12){
-            ptr[i] = 'C';
+    long converted = strtol(src, NULL, basesrc);
+
+    //int size = converted / basedest;
+
+    int size = 5;
+
+    short rests[size];
+    char *conv = calloc(size, sizeof(char));
+
+    long i;
+    for(i = 0; converted > 0; i++){
+        rests[i] = converted % basedest;
+        converted /= basedest;
+    }
+
+    for(i = 0; i < size; i++){
+        if(rests[i] > 9){
+            conv[i] = rests[i] + 55;
         }else {
-            ptr[i] = arr[i] + '0';
-
+            conv[i] = rests[i] + '0';
         }
 
     }
 
-    all->duo = malloc(10);
-    sprintf(all->duo, "%c", ptr[0]);
+    conv[strlen(conv) - 1] = '\0';
 
-    return 0;
-}
 
-int dectohex(numbers *all){
+    char *reversed = calloc(size, sizeof(char));
 
-    all->hex = malloc(strlen(all->bin));
-    sprintf(all->hex, "%X", all->decimal);
+    for(i = 0; i < size; i++){
+       reversed[i] = conv[size - 2 - i];
+    }
+
+    reversed[size - 1] = '\0';
+
+    strcpy(dest, reversed);
+
+    free(conv);
+    free(reversed);
+
     return 0;
 }

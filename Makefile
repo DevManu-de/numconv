@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS := -Wall -Wextra -g -std=c99
+CFLAGS := -Wall -Wextra -g
 LFLAGS = 
 OUTPUT := output
 SRC := src
