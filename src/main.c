@@ -4,18 +4,22 @@
 #include "numstoany.h"
 
 
-int main(int argc, const char *argv[]){
+int main(int argc, char *argv[]){
 
 	if(argc > 4 && argc < 3){
 		puts("Wrong amount of parameters expected 2 or 3");
 		exit(0);
 	}
 
+	numbers all;
+
 	int i;
 	for(i = 1; i < argc; i++){
 
 		if(!strcmp(argv[i], "-bin")){
-
+			all.bin = malloc(strlen(argv[i + 1]) * sizeof(char));
+			strcpy(all.bin, argv[i + 1]);
+			bintoany(&all);
 		}else if (!strcmp(argv[i], "-oct")){
 
 		}else if (!strcmp(argv[i], "-dec")){

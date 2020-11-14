@@ -12,13 +12,18 @@ typedef struct nums{
 
 } numbers;
 
-int bintoany();
-int octtoany();
-int dectoany();
-int duotoany();
-int hextoany();
-int csmtoany();
+int bintoany(numbers *);
+int octtoany(numbers *);
+int dectoany(numbers *);
+int duotoany(numbers *);
+int hextoany(numbers *);
+int csmtoany(numbers *);
 
+int dectobin(numbers *);
+int dectooct(numbers *);
+int dectoduo(numbers *);
+int dectohex(numbers *);
+int dectocsm(numbers *);
 
 
 #endif
