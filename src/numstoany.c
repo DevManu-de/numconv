@@ -19,7 +19,7 @@ int numberconv(char *src, const int basesrc, char *dest, const int basedest){
     //Converts the input number to decimal
     unsigned int converted = strtol(src, NULL, basesrc);
 
-    unsigned int size = (int) (log10(converted) / log10(2)) + 2;
+    unsigned int size = (int) (log2(converted)) + 2;
 
     short rests[size];
     char *conv = calloc(size, sizeof(char));
@@ -42,9 +42,19 @@ int numberconv(char *src, const int basesrc, char *dest, const int basedest){
     }
 
     conv[size - 1] = '\0';
+    char *end = conv;
+
+    //Removes leading 0's
+    for(i = 0; i < size - 1; i++){
+        if(conv[i] == '0'){
+            end = &conv[i + 1];
+        }else {
+            break;
+        }
+    }
 
     //copys the string to the destination
-    strcpy(dest, conv);
+    strcpy(dest, end);
 
     free(conv);
 

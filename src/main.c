@@ -8,12 +8,6 @@
 
 int main(int argc, char *argv[]){
 
-	//char *a = "f16";
-	//char *b = malloc((int) (log10(strtol(a, NULL, 16)) / log10(2)) + 1);
-	//numberconv(a, 16, b, 2, 1);
-	//printf("%d\n", (int) log2(5) + 1);
-	//exit(0);
-
 	char opt;
 	unsigned int inpbase;
 	unsigned int outbase;
@@ -32,9 +26,9 @@ int main(int argc, char *argv[]){
 				break;
 
 			case 'n' :
-				size = (int) log2(atoi(optarg));
-				number = malloc(size);
-				output = malloc(size);
+				size = (int) log2(strtol(optarg, NULL, inpbase));
+				number = calloc(size, 1);
+				output = calloc(size, 1);
 				strcpy(number, optarg);
 				break;
 
