@@ -33,4 +33,7 @@ int main(int argc, char *argv[]){
 		}
 	}
 
+	printf("%s %d %s %s %s\n", all.bin, all.decimal, all.oct, all.hex, all.duo);
+
+
 }
