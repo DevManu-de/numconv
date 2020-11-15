@@ -4,16 +4,11 @@
 #include <stdlib.h>
 #include <math.h>
 
-int numberconv(char *src, const int basesrc, char *dest, const int basedest){
-
-    if(basesrc == basedest){
-        strcpy(dest, src);
-        return 0;
-    }
+char *numberconv(char *src, const int basesrc, const int basedest){
 
     if(basedest > 36 || basesrc > 36 || basedest < 2 || basesrc < 2){
         fprintf(stderr, "Wrong base");
-        return -1;
+        return NULL;
     }
 
     //Converts the input number to decimal
@@ -53,10 +48,10 @@ int numberconv(char *src, const int basesrc, char *dest, const int basedest){
         }
     }
 
-    //copys the string to the destination
-    strcpy(dest, end);
+    char *endptr = malloc(strlen(end));
+    strcpy(endptr, end);
 
     free(conv);
 
-    return 0;
+    return endptr;
 }

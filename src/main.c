@@ -28,7 +28,6 @@ int main(int argc, char *argv[]){
 			case 'n' :
 				size = (int) log2(strtol(optarg, NULL, inpbase));
 				number = calloc(size, 1);
-				output = calloc(size, 1);
 				strcpy(number, optarg);
 				break;
 
@@ -36,7 +35,7 @@ int main(int argc, char *argv[]){
 
 	}
 
-	numberconv(number, inpbase, output, outbase);
+	output = numberconv(number, inpbase, outbase);
 	printf("%s\n", output);
 
 	return 0;
