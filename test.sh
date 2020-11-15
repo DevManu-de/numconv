@@ -1,0 +1,7 @@
+./output/main -i 16 -n f16 -o 2 && echo "Expected: 111100010110"
+./output/main -i 16 -n f16 -o 10 && echo "Expected: 3862"
+./output/main -i 2 -n 1010 -o 2 && echo "Expected: 1010"
+./output/main -i 2 -n 1010 -o 10 && echo "Expected: 10"
+./output/main -i 2 -n 1010 -o 16 && echo "Expected: A"
+./output/main -i 10 -n 432 -o 2 && echo "Expected: 110110000"
+./output/main -i 10 -n 421 -o 32 && echo "Expected: D5"
