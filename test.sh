@@ -5,3 +5,4 @@
 ./output/main -i 2 -n 1010 -o 16 && echo "Expected: A"
 ./output/main -i 10 -n 432 -o 2 && echo "Expected: 110110000"
 ./output/main -i 10 -n 421 -o 32 && echo "Expected: D5"
+./output/main -i 10 -n 55 -o 10 && echo "Expected: 55"

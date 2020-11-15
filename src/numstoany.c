@@ -16,7 +16,7 @@ char *numberconv(char *src, const int basesrc, const int basedest){
 
     unsigned int size = maxsize(converted);
 
-    short rests[size];
+    short *rests = calloc(size, sizeof(short));
     char *conv = calloc(size, sizeof(char));
 
     //Devides the number and writes it reversed in the array
