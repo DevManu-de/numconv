@@ -48,6 +48,7 @@ char *numberconv(char *src, const int basesrc, const int basedest){
         }
     }
 
+    //copys the string to new memory location and return it
     char *endptr = malloc(strlen(end));
     strcpy(endptr, end);
 

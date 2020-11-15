@@ -13,7 +13,6 @@ int main(int argc, char *argv[]){
 	unsigned int outbase;
 	char *number;
 	char *output;
-	int size;
 
 	while ((opt = getopt(argc, argv, ":i:o:n:")) != -1){
 		switch(opt){
@@ -26,8 +25,7 @@ int main(int argc, char *argv[]){
 				break;
 
 			case 'n' :
-				size = maxsize(strtol(optarg, NULL, inpbase));
-				number = calloc(size, 1);
+				number = calloc(strlen(optarg) + 1, sizeof(char));
 				strcpy(number, optarg);
 				break;
 
