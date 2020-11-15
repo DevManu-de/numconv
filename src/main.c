@@ -26,7 +26,7 @@ int main(int argc, char *argv[]){
 				break;
 
 			case 'n' :
-				size = (int) log2(strtol(optarg, NULL, inpbase));
+				size = maxsize(strtol(optarg, NULL, inpbase));
 				number = calloc(size, 1);
 				strcpy(number, optarg);
 				break;

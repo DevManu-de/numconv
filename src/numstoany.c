@@ -14,7 +14,7 @@ char *numberconv(char *src, const int basesrc, const int basedest){
     //Converts the input number to decimal
     unsigned int converted = strtol(src, NULL, basesrc);
 
-    unsigned int size = (int) (log2(converted)) + 2;
+    unsigned int size = maxsize(converted);
 
     short rests[size];
     char *conv = calloc(size, sizeof(char));
