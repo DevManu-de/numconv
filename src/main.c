@@ -9,8 +9,8 @@
 int main(int argc, char *argv[]){
 
 	char opt;
-	unsigned int inpbase;
-	unsigned int outbase;
+	unsigned int inpbase = 0;
+	unsigned int outbase = 0;
 	char *number = NULL;
 	char **characters;
 	char *output;
@@ -30,6 +30,12 @@ int main(int argc, char *argv[]){
 
 			case 'n' :
 				number = calloc(strlen(optarg) + 1, sizeof(char));
+
+				if(strlen(optarg) == 1 && optarg[0] == '0'){
+
+					die("Number connot be 0");
+				}
+			
 				strcpy(number, optarg);
 				break;
 
@@ -49,12 +55,12 @@ int main(int argc, char *argv[]){
 
 	}
 
-	if(number){
+	if(number && inpbase && outbase){
 
 		output = numberconv(number, inpbase, outbase);
 		puts(output);
-		free(number);
-	}else {
+
+	}else if(outbase) {
 		number = calloc(1, sizeof(int));
 		for(i = 0; i < lengh; i++){
 			sprintf(number, "%d", characters[i][0]);
@@ -64,9 +70,14 @@ int main(int argc, char *argv[]){
 		}
 		printf("\n");
 		free(characters);
-		free(number);
-		free(output);
+		free(arg);
+	}else {
+
+		die("Not enough parameters or wrong values");
 	}
+
+	free(number);
+	free(output);
 
 	return 0;
 }

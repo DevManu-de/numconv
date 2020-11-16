@@ -7,8 +7,8 @@
 char *numberconv(char *src, const int basesrc, const int basedest){
 
     if(basedest > 36 || basesrc > 36 || basedest < 2 || basesrc < 2){
-        fprintf(stderr, "Wrong base");
-        return NULL;
+
+        die("Wrong base");
     }
 
     //Converts the input number to decimal
@@ -37,6 +37,7 @@ char *numberconv(char *src, const int basesrc, const int basedest){
     }
 
     free(rests);
+   
     conv[size - 1] = '\0';
     char *end = conv;
 
@@ -56,4 +57,12 @@ char *numberconv(char *src, const int basesrc, const int basedest){
     free(conv);
 
     return endptr;
+}
+
+
+void die(char *message){
+
+    fprintf(stderr, "%s\n", message);
+    exit(-1);
+
 }
