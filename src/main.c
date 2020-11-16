@@ -9,13 +9,15 @@
 int main(int argc, char *argv[]){
 
 	char opt;
-	unsigned int inpbase = 0;
-	unsigned int outbase = 0;
+	//char is used to reduce memory
+	unsigned char inpbase = 0;
+	unsigned char outbase = 0;
+
 	char *number = NULL;
 	char **characters;
 	char *output;
-	int i;
-	int lengh;
+	unsigned short i;
+	unsigned short lengh;
 	char *arg;
 
 	while ((opt = getopt(argc, argv, ":i:o:n:s:")) != -1){
@@ -41,7 +43,7 @@ int main(int argc, char *argv[]){
 
 			case 's' :
 				lengh = strlen(optarg);
-				characters = calloc(lengh, sizeof(char*));
+				characters = calloc(lengh, sizeof(char *));
 				arg = malloc(lengh);
 				strcpy(arg, optarg);
 				for(i = 0; i < lengh; i++){

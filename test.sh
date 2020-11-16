@@ -6,3 +6,5 @@
 ./output/main -i 10 -n 432 -o 2 && echo "Expected: 110110000"
 ./output/main -i 10 -n 421 -o 32 && echo "Expected: D5"
 ./output/main -i 10 -n 55 -o 10 && echo "Expected: 55"
+./output/main -s Hello -o 2 && echo "Expected: 1001000 1100101 1101100 1101100 1101111"
+./output/main -s HelloMyFriend -o 10 && echo "Expected: 72 101 108 108 111 77 121 70 114 105 101 110 100"

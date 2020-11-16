@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <math.h>
 
-char *numberconv(char *src, const int basesrc, const int basedest){
+char *numberconv(const char *src, const unsigned short basesrc, const unsigned short basedest){
 
     if(basedest > 36 || basesrc > 36 || basedest < 2 || basesrc < 2){
 
