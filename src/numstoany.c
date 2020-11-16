@@ -36,6 +36,7 @@ char *numberconv(char *src, const int basesrc, const int basedest){
 
     }
 
+    free(rests);
     conv[size - 1] = '\0';
     char *end = conv;
 

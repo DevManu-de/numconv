@@ -11,8 +11,12 @@ int main(int argc, char *argv[]){
 	char opt;
 	unsigned int inpbase;
 	unsigned int outbase;
-	char *number;
+	char *number = NULL;
+	char **characters;
 	char *output;
+	int i;
+	int lengh;
+	char *arg;
 
 	while ((opt = getopt(argc, argv, ":i:o:n:s:")) != -1){
 		switch(opt){
@@ -30,14 +34,41 @@ int main(int argc, char *argv[]){
 				break;
 
 			case 's' :
+				lengh = strlen(optarg);
+				characters = calloc(lengh, sizeof(char));
+				arg = malloc(lengh);
+				strcpy(arg, optarg);
+				for(i = 0; i < lengh; i++){
+					characters[i] = calloc(1, sizeof(char));
+					memcpy(characters[i], &arg[i], sizeof(char));
+					printf("%s", arg);
+				}
+
 				break;
 
 		}
 
 	}
 
-	output = numberconv(number, inpbase, outbase);
-	printf("%s\n", output);
+	if(number){
+
+		output = numberconv(number, inpbase, outbase);
+		puts(output);
+		free(number);
+	}else {
+		number = calloc(1, sizeof(int));
+		for(i = 0; i < lengh; i++){
+			sprintf(number, "%d", characters[i][0]);
+			printf("%d", characters[i][0]);
+			output = numberconv(number, 10, outbase);
+			//printf("%s ", output);
+
+		}
+		printf("\n");
+		free(characters);
+		free(number);
+		free(output);
+	}
 
 	return 0;
 }
