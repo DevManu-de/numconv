@@ -14,7 +14,7 @@ int main(int argc, char *argv[]){
 	char *number;
 	char *output;
 
-	while ((opt = getopt(argc, argv, ":i:o:n:")) != -1){
+	while ((opt = getopt(argc, argv, ":i:o:n:s:")) != -1){
 		switch(opt){
 			case 'i':
 				inpbase = atoi(optarg);
@@ -27,6 +27,9 @@ int main(int argc, char *argv[]){
 			case 'n' :
 				number = calloc(strlen(optarg) + 1, sizeof(char));
 				strcpy(number, optarg);
+				break;
+
+			case 's' :
 				break;
 
 		}
