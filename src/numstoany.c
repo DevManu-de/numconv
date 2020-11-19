@@ -1,3 +1,5 @@
+/* See LICENSE file for copyright and license details. */
+
 #include "numstoany.h"
 #include <string.h>
 #include <stdio.h>

@@ -1,3 +1,5 @@
+/* See LICENSE file for copyright and license details. */
+
 #ifndef _NUMSTOANY_H_
 #define _NUMSTOANY_H_
 
