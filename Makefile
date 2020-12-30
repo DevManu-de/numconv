@@ -1,3 +1,5 @@
+# https://github.com/danielpinto8zz6/c-cpp-project-generator#readme
+
 CC = gcc
 CFLAGS := -Wall -Wextra -g -lm
 LFLAGS = 

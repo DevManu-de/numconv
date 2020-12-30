@@ -45,7 +45,7 @@ char *numberconv(const char *src, const unsigned short basesrc, const unsigned s
 
     //Removes leading 0's
     for(i = 0; i < size - 1; i++){
-        if(conv[i] == '0'){
+        if(conv[i] == '0' && strlen(conv) > 1){
             end = &conv[i + 1];
         }else {
             break;

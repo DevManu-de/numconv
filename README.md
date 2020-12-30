@@ -13,7 +13,7 @@ Any ideas to improve are always appreciated.
 ```
 make
 ```
-Then a output folder is generated
+Then an output folder is generated
 ```
 output/main -i <base of input number> -n <number to be converted> -o <base of ouputted number>
 ```

@@ -35,11 +35,6 @@ int main(int argc, char *argv[]){
 			case 'n' :
 				number = calloc(strlen(optarg) + 1, sizeof(char));
 
-				if(strlen(optarg) == 1 && optarg[0] == '0'){
-
-					die("Number connot be 0");
-				}
-			
 				strcpy(number, optarg);
 				break;
 
