@@ -28,17 +28,17 @@ int main(int argc, char *argv[]){
 				inpbase = atoi(optarg);
 				break;
 
-			case 'o' :
+			case 'o':
 				outbase = atoi(optarg);
 				break;
 
-			case 'n' :
+			case 'n':
 				number = calloc(strlen(optarg) + 1, sizeof(char));
 
 				strcpy(number, optarg);
 				break;
 
-			case 's' :
+			case 's':
 				lengh = strlen(optarg);
 				characters = calloc(lengh, sizeof(char *));
 				arg = malloc(lengh);
@@ -47,9 +47,17 @@ int main(int argc, char *argv[]){
 					characters[i] = calloc(1, sizeof(char));
 					memcpy(characters[i], &arg[i], sizeof(char));
 				}
-
 				break;
 
+			case ':':
+				printf("Option -%c requires an argument\n", optopt);
+				exit(-1);
+				break;
+
+			case '?':
+				printf("Unknown option -%c", optopt);
+				exit(-2);
+				break;
 		}
 
 	}
@@ -61,7 +69,7 @@ int main(int argc, char *argv[]){
 
 	}else if(outbase) {
 		number = calloc(1, sizeof(int));
-		for(i = 0; i < lengh; i++){
+		for(i = 0; i < lengh; ++i){
 			sprintf(number, "%d", characters[i][0]);
 			output = numberconv(number, 10, outbase);
 			printf("%s ", output);
