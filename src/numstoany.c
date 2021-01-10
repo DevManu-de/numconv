@@ -14,7 +14,9 @@ char *numberconv(const char *src, const unsigned short basesrc, const unsigned s
     }
 
     //Converts the input number to decimal
-    unsigned int converted = strtol(src, NULL, basesrc);
+    int converted = strtol(src, NULL, basesrc);
+
+    converted = (converted < 0 ? abs(converted) : converted);
 
     unsigned int size = maxsize(converted);
 
