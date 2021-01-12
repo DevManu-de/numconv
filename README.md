@@ -22,3 +22,10 @@ To convert a string to a number
 ```
 output/main -s <string> -o <base of outputted numbers>
 ```
+
+To get some samples, there is a test.sh with some samples in it.
+
+## Contributing
+
+Just fork it and make a pull request.
+To ensure that the program works as expected, please run the test.sh file.
