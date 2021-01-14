@@ -51,6 +51,11 @@ expected="55"
 output="$($executabledir$executable $parameters)"
 [ "$output" = "$expected" ] && printf "OK\t$executabledir$executable $parameters\n" || printf "FAILED\t$executabledir$executable $parameters expected $expected but got $output\n"
 
+parameters="-i 5 -n 423 -o 13"
+expected="89"
+output="$($executabledir$executable $parameters)"
+[ "$output" = "$expected" ] && printf "OK\t$executabledir$executable $parameters\n" || printf "FAILED\t$executabledir$executable $parameters expected $expected but got $output\n"
+
 parameters="-s Hello -o 2"
 expected="1001000 1100101 1101100 1101100 1101111 "
 output="$($executabledir$executable $parameters)"
