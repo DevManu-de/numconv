@@ -3,6 +3,10 @@
 executabledir="./output/"
 executable="main"
 
+#############################################################################################################
+# ATTENTION WHEN CHECKING FOR STRING CONVERSION A EXTRA SPACE IS REQUIRED AT THE END OF THE EXPECTED OUTPUT #
+#############################################################################################################
+
 parameters=(
 	"-i 16 -n 0 -o 2"
 	"-i 16 -n f16 -o 2"
