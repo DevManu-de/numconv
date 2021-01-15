@@ -38,10 +38,20 @@ expectations=(
 )
 
 length=${#parameters[@]}
+success=0
+failed=0
 
 for (( i = 0; i < $length; i++ ))
 do
 	output="$($executabledir$executable ${parameters[$i]})"
-	[ "$output" = "${expectations[$i]}" ] && echo -e "OK\t$executabledir$executable ${parameters[$i]}" || echo -e "FAILED\t$executabledir$executable ${parameters[$i]} expected ${expect[$i]} but got $output"
-
+	if [ "$output" = "${expectations[$i]}" ] 
+	then 
+		echo -e "OK\t$executabledir$executable ${parameters[$i]}"
+		(( success++ )) 
+	else
+		echo -e "FAILED\t$executabledir$executable ${parameters[$i]} expected ${expectations[$i]} but got $output"
+		(( failed++ ))
+	fi
 done
+
+echo -e "\n$success SUCCESSFUL $failed FAILED"
