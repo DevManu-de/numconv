@@ -44,7 +44,7 @@ int main(int argc, char *argv[]){
 				arg = malloc(lengh);
 				strcpy(arg, optarg);
 				for(i = 0; i < lengh; i++){
-					characters[i] = calloc(1, sizeof(char));
+					characters[i] = malloc(sizeof(char));
 					memcpy(characters[i], &arg[i], sizeof(char));
 				}
 				break;
