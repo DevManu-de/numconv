@@ -55,7 +55,7 @@ char *numberconv(const char *src, const unsigned short basesrc, const unsigned s
     }
 
     //copys the string to new memory location and return it
-    char *endptr = malloc(strlen(end));
+    char *endptr = malloc(strlen(end) + 1);
     strcpy(endptr, end);
 
     free(conv);
