@@ -16,11 +16,10 @@ int main(int argc, char *argv[]){
 	unsigned char outbase = 0;
 
 	char *number = NULL;
-	char **characters;
+	char *characters;
 	char *output;
 	unsigned short i;
 	unsigned short lengh;
-	char *arg;
 
 	while ((opt = getopt(argc, argv, ":i:o:n:s:")) != -1){
 		switch(opt){
@@ -33,20 +32,12 @@ int main(int argc, char *argv[]){
 				break;
 
 			case 'n':
-				number = calloc(strlen(optarg) + 1, sizeof(char));
-
-				strcpy(number, optarg);
+				number = strdup(optarg);
 				break;
 
 			case 's':
 				lengh = strlen(optarg);
-				characters = calloc(lengh, sizeof(char *));
-				arg = malloc(lengh);
-				strcpy(arg, optarg);
-				for(i = 0; i < lengh; i++){
-					characters[i] = malloc(sizeof(char));
-					memcpy(characters[i], &arg[i], sizeof(char));
-				}
+				characters = strdup(optarg);
 				break;
 
 			case ':':
@@ -68,23 +59,23 @@ int main(int argc, char *argv[]){
 		puts(output);
 
 	}else if(outbase) {
-		number = calloc(1, sizeof(int));
+		number = malloc(4);
 		for(i = 0; i < lengh; ++i){
-			sprintf(number, "%d", characters[i][0]);
+			sprintf(number, "%d", characters[i]);
 			output = numberconv(number, 10, outbase);
 			printf("%s ", output);
 
+			free(output);
 		}
-		printf("\n");
+
 		free(characters);
-		free(arg);
+		puts("");
 	}else {
 
 		die("Not enough parameters or wrong values");
 	}
 
 	free(number);
-	free(output);
 
 	return 0;
 }

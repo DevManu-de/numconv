@@ -25,13 +25,13 @@ char *numberconv(const char *src, const unsigned short basesrc, const unsigned s
 
     //Devides the number and writes it reversed in the array
     unsigned int i;
-    for(i = 0; converted > 0; i++){
+    for(i = 0; converted > 0; ++i){
         rests[i] = converted % basedest;
         converted /= basedest;
     }
 
     //Convert numbers to characters if needed and reverses the array
-    for(i = 0; i < size - 1; i++){
+    for(i = 0; i < size - 1; ++i){
         if(rests[i] > 9){
             conv[size - 2 - i] = rests[i] + 55;
         }else {
@@ -46,7 +46,7 @@ char *numberconv(const char *src, const unsigned short basesrc, const unsigned s
     char *end = conv;
 
     //Removes leading 0's
-    for(i = 0; i < size - 1; i++){
+    for(i = 0; i < size - 1; ++i){
         if(conv[i] == '0' && strlen(conv) > 1){
             end = &conv[i + 1];
         }else {
