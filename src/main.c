@@ -16,7 +16,7 @@ int main(int argc, char *argv[]){
 	unsigned char outbase = 0;
 
 	char *number = NULL;
-	char *characters;
+	char *characters = NULL;
 	char *output;
 	unsigned short i;
 	unsigned short lengh;
@@ -57,8 +57,9 @@ int main(int argc, char *argv[]){
 
 		output = numberconv(number, inpbase, outbase);
 		puts(output);
+		free(output);
 
-	}else if(outbase) {
+	}else if(characters && outbase) {
 		number = malloc(4);
 		for(i = 0; i < lengh; ++i){
 			sprintf(number, "%d", characters[i]);
@@ -72,7 +73,7 @@ int main(int argc, char *argv[]){
 		puts("");
 	}else {
 
-		die("Not enough parameters or wrong values");
+		die("Not enough parameters or wrong values\n");
 	}
 
 	free(number);
