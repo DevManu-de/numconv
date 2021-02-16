@@ -23,8 +23,8 @@ char *numberconv(const char *src, const unsigned short basesrc, const unsigned s
 
     unsigned int maxsize = maxsize(converted);
 
-    short *rests = calloc(maxsize, sizeof(short));
-    char *conv = calloc(maxsize, sizeof(char));
+    short *rests = calloc(maxsize, sizeof(*rests));
+    char *conv = calloc(maxsize, sizeof(*conv));
 
     //Devides the number and writes it reversed in the array
     unsigned int i;
