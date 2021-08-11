@@ -34,7 +34,7 @@ char *numberconv(const char *src, const unsigned short basesrc, const unsigned s
     //Convert numbers to characters if needed and reverses the array
     for (i = 0; i < maxsize - 1; ++i) {
         if (rests[i] > 9){
-            conv[maxsize - 2 - i] = rests[i] + 55;
+            conv[maxsize - 2 - i] = rests[i] + ('a' - 10);
         }else {
             conv[maxsize - 2 - i] = rests[i] + '0';
         }
